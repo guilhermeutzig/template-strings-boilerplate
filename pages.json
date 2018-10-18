@@ -1,0 +1,38 @@
+{
+  "/": {
+    "name": "index",
+    "entry": "./src/pages/index.js",
+    "template": "./src/pages/index.html",
+    "inject": true,
+    "chunks": ["index"],
+    "filename": "index.html",
+    "keywords": "",
+    "description": "",
+    "metatags": {
+      "title": "Index",
+      "url": "https://url-site.com",
+      "image": "https://url-site.com/share/home.jpg",
+      "description": "description site.",
+      "site_name": "Index",
+      "type": "website"
+    }
+  },
+  "/about": {
+    "name": "about",
+    "entry": "./src/pages/about.js",
+    "template": "./src/pages/about.html",
+    "inject": true,
+    "chunks": ["about"],
+    "filename": "about.html",
+    "keywords": "",
+    "description": "",
+    "metatags": {
+      "title": "About",
+      "url": "https://url-site.com",
+      "image": "https://url-site.com/share/about.jpg",
+      "description": "description site.",
+      "site_name": "About",
+      "type": "website"
+    }
+  }
+}
