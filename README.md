@@ -30,6 +30,12 @@ npm run dev or yarn dev
 npm run serve or yarn serve
 ```
 
+### Production build
+
+```sh
+npm run build or yarn build
+```
+
 # Pages creation
 
 On the root folder of the project, there is a file named `pages.json`. Inside it you can declare what pages will exist in the project with their respective meta tags.
