@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const pagesConfig = require('./pages.json');
+const pagesConfig = require('../pages.json');
 
 let arrHtmlWebpackPluginPages = [];
 let arrPagesEntry = {};
@@ -17,13 +17,15 @@ if (pagesConfig) {
 }
 
 module.exports = {
+  devServer: {
+    port: 8080,
+    publicPath: '/',
+    stats: 'errors-only',
+    open: false
+  },
   entry: {
     ...arrPagesEntry
   },
-  devServer: {
-    port: 8080
-  },
-  plugins: [...arrHtmlWebpackPluginPages],
   module: {
     rules: [
       {
@@ -45,8 +47,8 @@ module.exports = {
             loader: 'sass-loader?sourceMap',
             options: {
               includePaths: [
-                resolve(__dirname, './src/styles'),
-                resolve(__dirname, './node_modules')
+                resolve(__dirname, '../src/styles'),
+                resolve(__dirname, '../node_modules')
               ]
             }
           },
@@ -54,20 +56,40 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: resolve(__dirname, './postcss.config.js')
+                path: resolve(__dirname, '../postcss.config.js')
               }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif|ico|mp4|mov|svg|webm|pdf|zip)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              useRelativePath: false,
+              outputPath: 'assets',
+              context: 'assets'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+              outputPath: 'assets',
+              context: 'assets'
             }
           }
         ]
       }
     ]
   },
-  resolve: {
-    extensions: ['.js', '.scss', '.svg', 'jpg', 'png'],
-    alias: {
-      styles: resolve(__dirname, './src/styles'),
-      components: resolve(__dirname, './src/components'),
-      pages: resolve(__dirname, './src/pages')
-    }
-  }
+  plugins: [...arrHtmlWebpackPluginPages]
 };

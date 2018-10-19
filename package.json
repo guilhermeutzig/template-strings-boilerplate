@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.dev.js --mode development",
-    "build": "webpack --config webpack.prod.js --mode production",
+    "dev": "NODE_ENV=development webpack-dev-server --mode development --config ./config/webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js --mode production",
     "serve": "npm run build && http-server dist"
   },
   "author": "",
@@ -23,13 +23,15 @@
     "babel-loader": "7.0.0",
     "babel-preset-env": "1.7.0",
     "css-loader": "1.0.0",
-    "http-server": "^0.11.1",
+    "file-loader": "2.0.0",
+    "http-server": "0.11.1",
     "node-sass": "4.9.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
     "postcss-loader": "3.0.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack-dev-server": "3.1.9"
+    "uglifyjs-webpack-plugin": "2.0.1",
+    "webpack-dev-server": "3.1.9",
+    "webpack-merge": "4.1.4"
   }
 }
